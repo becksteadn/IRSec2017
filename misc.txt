@@ -1,5 +1,7 @@
-#Show unique usernames logged in
+#Show number of users logged in
 w | cut -f1 -d' ' | uniq | wc -l
+#Show users logged in
+w -h | cut -f1 -d' ' | uniq | sort | uniq
 
 #Show current network connections
 netstat
@@ -23,3 +25,16 @@ tshark
     -T output format (usually 'fields')
     -e field to print
     tshark -T fields -e frame.number -e ip.src -e ip.dst -e tcp.dstport
+
+#Show logged in users
+w
+    -h Print without the header
+
+#Print location of a command
+which
+    -a Print all locations if multiple matches
+
+#List processes with open files
+lsof
+    -i Processes with open sockets
+
