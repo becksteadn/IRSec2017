@@ -1,0 +1,25 @@
+#Show unique usernames logged in
+w | cut -f1 -d' ' | uniq | wc -l
+
+#Show current network connections
+netstat
+    -a All connections
+    -n Update (s) interval
+
+#Show live system stats
+top
+    -u <user> Only shows processes of user
+
+#Run command on interval
+watch
+    -d only show differences
+    -n Update (s) interval
+
+#Terminal Wireshark
+tshark
+    -c <packet count> stop after n packets
+    -r <infile> read from a file
+    -w write to pcap file
+    -T output format (usually 'fields')
+    -e field to print
+    tshark -T fields -e frame.number -e ip.src -e ip.dst -e tcp.dstport
