@@ -1,0 +1,24 @@
+#IPTables Notes and Shortcuts
+
+#Flush all rules
+iptables -F
+
+#Show Firewall Status
+iptables -L -n -v --line-numbers
+
+#Default Deny
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
+
+#Block outbound domain
+iptables -A OUTPUT -p tcp -d facebook.com -j LOGDROP
+
+#Block IP address
+iptables -A INPUT -s 1.2.3.4 -j LOGDROP
+
+#Allow certain service through
+iptables -A INPUT -p tcp --dport 25/80/22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 25/80/22 -m state --state ESTABLISHED -j ACCEPT
+
+
