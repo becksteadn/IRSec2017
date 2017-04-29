@@ -1,0 +1,41 @@
+	 Some usefull commands for live Windows IR by suhass92
+   
+   
+Netstat -naob : Lists out all ports on which different services (exe) are running along with their process ids. 
+   
+Tasklist /m /fi "pid eq #" : This gives you all the dlls that are invoked for a particular process with the pid #.
+   
+Tasklist /m will list out all the executables and their related dlls. 
+   
+Tasklist /svc
+
+Tasklist /fo /svc list | sort
+   
+Get-WmiObject win32_process | select processname, ProcessId, CommandLine
+
+Wmic process where processid=# get commandline : gives you the command executed for that particular exe to be running. 
+
+Get-wmiobject  win32_networkadapter -filter "netconnectonstatus = 2" | select  name, InterfaceIndex
+   
+Netsh interface ipv4 show interfaces
+   
+ipconfig /displaydns : Displays DNS records for that host.
+
+	User and group disabling and deleting
+
+net localgroup "Remote Desktop Users" /delete 
+
+net user > users.txt
+
+net group Administrators > admins.txt
+
+net user <username> /delete
+
+net user <username> /active:no 
+
+	Scheduled Tasklist
+schtasks /query
+
+schtasks /end /tn <taskname>
+
+
